@@ -1,4 +1,4 @@
-import{e as s,f as r}from"./utils-NA_0DrL0.js";function c(t){const i=t.price<(t.SuggestedRetailPrice||t.price);return`<li class="product-card">
+import{e as s,f as r}from"./utils-DZkesnri.js";function c(t){const i=t.price<(t.SuggestedRetailPrice||t.price);return`<li class="product-card">
               <a href="/product_pages/?product=${t.id}" class="card-link">
                 <div class="card-media">
                   <img src="${t.image}" alt="Image of ${t.title} class="card-image" />
