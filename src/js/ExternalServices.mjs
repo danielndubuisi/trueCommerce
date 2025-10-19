@@ -1,4 +1,4 @@
-const baseURL = import.meta.env.VITE_FAKESTORE_API_URL
+const baseURL = import.meta.env.VITE_FAKESTORE_API_URL;
 
 function convertToJson(res) {
   if (res.ok) {
@@ -9,24 +9,21 @@ function convertToJson(res) {
 }
 
 export default class ExternalServices {
-  constructor() {
-
-  }
+  constructor() {}
   async getData(category) {
     const response = await fetch(`${baseURL}products/`);
     const data = await convertToJson(response);
     if (category) {
       return data.filter(
-        (item) => item.category.toLowerCase() === category.toLowerCase()
+        (item) => item.category.toLowerCase() === category.toLowerCase(),
       );
     }
-    
+
     return data;
   }
   async findProductById(id) {
     const response = await fetch(`${baseURL}products/${id}`);
     const data = await convertToJson(response);
-    console.log(data);
     return data;
   }
 
@@ -38,7 +35,7 @@ export default class ExternalServices {
       },
       body: JSON.stringify(payload),
     };
-    console.log(options)
+    console.log(options);
     return await fetch(`${baseURL}checkout/`, options).then(convertToJson);
   }
 }

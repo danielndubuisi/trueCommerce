@@ -63,8 +63,17 @@ export async function loadHeaderFooter() {
   const headerURL = new URL("/templates/header.html", import.meta.url);
   const footerURL = new URL("/templates/footer.html", import.meta.url);
 
-  const headerContent = await loadTemplate(headerURL);
-  const footerContent = await loadTemplate(footerURL);
+  let headerContent = await loadTemplate(headerURL);
+  let footerContent = await loadTemplate(footerURL);
+
+  // ✅ Automatically rewrite paths for correct base
+  const base = import.meta.env.BASE_URL || "/";
+  headerContent = headerContent
+    .replaceAll(`href="/`, `href="${base}`)
+    .replaceAll(`src="/`, `src="${base}`);
+  footerContent = footerContent
+    .replaceAll(`href="/`, `href="${base}`)
+    .replaceAll(`src="/`, `src="${base}`);
 
   renderWithTemplate(headerContent, header);
   renderWithTemplate(footerContent, footer);

@@ -11,21 +11,50 @@
   <body>
     <header class="divider" id="header-template"></header>
 
-    <main class="divider">
+    <main class="product-detail-main">
+      <nav class="breadcrumb"></nav>
       <section class="product-detail">
-        <h3></h3>
-        <div class="product-image-container">
-          <img id="productImage" src="path_to_image.jpg" alt="Product Name" />
-          <div class="ribbon" id="discountRibbon">SAVE $X.XX!</div>
+        <div class="product-detail-grid">
+          <div class="product-image-section">
+            <img id="productImage" src="path_to_image.jpg" alt="Product Name" />
+          </div>
+          <div class="product-info-section">
+            <h3 id="productName">Product Name</h3>
+            <p id="productShortDesc">Short description, color, size</p>
+            <div class="product-pricing">
+              <span id="productFinalPrice" class="product-price">$95</span>
+              <del id="productPrice" class="product-old-price">$119</del>
+              <span id="productDiscount" class="product-discount">-20%</span>
+            </div>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="review-count">(32)</span>
+            </div>
+            <div class="product-color">
+              <label for="colorSelect">Color:</label>
+              <select id="colorSelect">
+                <option value="black">Black</option>
+                <option value="white">White</option>
+              </select>
+            </div>
+            <button id="addToCart" class="add-to-cart-btn">Add to Cart</button>
+            <div class="product-availability">
+              <span class="available">Available</span>
+              <span class="shipping">Shipping within 4 days</span>
+            </div>
+            <ul class="product-features">
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Consectetur adipiscing elit.</li>
+              <li>Nulla quam velit, vulputate eu pharetra nec.</li>
+              <li>Mattis ac neque</li>
+            </ul>
+          </div>
         </div>
-        <h2 class="divider"></h2>
-        <p id="productFinalPrice" class="product-card__priceDiscount"></p>
-        <del><p id="productPrice" class="product-card__price"></p></del>
-        <p id="savePrice" class="product-card__priceSaved"></p>
-        <p class="product__color" id="productColor"></p>
-        <p class="product__description" id="productDesc"></p>
-        <div class="product-detail__add">
-          <button id="addToCart" data-id="344YJ">Add to Cart</button>
+        <div class="product-detail-tabs">
+          <button class="tab-btn">Product Details</button>
+          <button class="tab-btn">Size & Measurements</button>
+          <button class="tab-btn">Reviews</button>
+        </div>
         </div>
       </section>
     </main>
