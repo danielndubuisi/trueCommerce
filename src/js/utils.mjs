@@ -34,7 +34,7 @@ export function renderListWithTemplate(
   parentElement,
   list,
   position = "afterbegin",
-  clear = false
+  clear = false,
 ) {
   if (!parentElement) {
     console.warn("renderListWithTemplate: parentElement not found");
@@ -59,8 +59,12 @@ export async function loadTemplate(path) {
 export async function loadHeaderFooter() {
   const header = document.querySelector("header");
   const footer = document.querySelector("footer");
-  const headerContent = await loadTemplate("../templates/header.html");
-  const footerContent = await loadTemplate("../templates/footer.html");
+
+  const headerURL = new URL("/templates/header.html", import.meta.url);
+  const footerURL = new URL("/templates/footer.html", import.meta.url);
+
+  const headerContent = await loadTemplate(headerURL);
+  const footerContent = await loadTemplate(footerURL);
 
   renderWithTemplate(headerContent, header);
   renderWithTemplate(footerContent, footer);

@@ -6,7 +6,7 @@ function productCardTemplate(product) {
     product.price < (product.SuggestedRetailPrice || product.price);
 
   return `<li class="product-card">
-              <a href="/product_pages/?product=${product.id}" class="card-link">
+              <a href="${import.meta.env.BASE_URL}product_pages/?product=${product.id}" class="card-link">
                 <div class="card-media">
                   <img src="${product.image}" alt="Image of ${product.title} class="card-image" />
                 </div>
