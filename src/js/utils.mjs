@@ -59,8 +59,8 @@ export async function loadTemplate(path) {
 export async function loadHeaderFooter() {
   const header = document.querySelector("header");
   const footer = document.querySelector("footer");
-  const headerContent = await loadTemplate("../assets/templates/header.html");
-  const footerContent = await loadTemplate("../assets/templates/footer.html");
+  const headerContent = await loadTemplate("../templates/header.html");
+  const footerContent = await loadTemplate("../templates/footer.html");
 
   renderWithTemplate(headerContent, header);
   renderWithTemplate(footerContent, footer);

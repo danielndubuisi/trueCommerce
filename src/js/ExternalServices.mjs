@@ -1,46 +1,44 @@
-const storeURL = import.meta.env.FAKESTORE_API_URL;
+const baseURL = import.meta.env.VITE_FAKESTORE_API_URL
 
 function convertToJson(res) {
-    console.log(res);
-    if (res.ok) {
-        return res.json();
-    } else {
-        throw new Error("Bad Response");
-    }
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Bad Response");
+  }
 }
 
-// this class handles all external service calls
 export default class ExternalServices {
-    constructor() {}
+  constructor() {
 
-    // gets all the store data and only category data if specified
-    async getData(category) {
-        const response = await fetch(`${storeURL}`);
-        const data = await convertToJson(response);
-        if (category) {
-            const catData = data.filter(data.category == category)
-            return catData;
-        } else {
-            return data.Result;
-        }
+  }
+  async getData(category) {
+    const response = await fetch(`${baseURL}products/`);
+    const data = await convertToJson(response);
+    if (category) {
+      return data.filter(
+        (item) => item.category.toLowerCase() === category.toLowerCase()
+      );
     }
-    // find a specific item
-    async findProductById(id) {
-        const response = await fetch(`${storeURL}/${id}`);
-        const data = await convertToJson(response);
-        return data.Result;
-    }
+    
+    return data;
+  }
+  async findProductById(id) {
+    const response = await fetch(`${baseURL}products/${id}`);
+    const data = await convertToJson(response);
+    console.log(data);
+    return data;
+  }
 
-    // checkout function
-    async checkout(payload) {
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-        };
-        console.log(options);
-        return await fetch(`${storeURL}checkout/`, options).then(convertToJson);
-    }
+  async checkout(payload) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    };
+    console.log(options)
+    return await fetch(`${baseURL}checkout/`, options).then(convertToJson);
+  }
 }
