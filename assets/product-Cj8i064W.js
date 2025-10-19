@@ -1,1 +1,0 @@
-import{l as o,b as r}from"./utils-DZkesnri.js";import{E as t}from"./ExternalServices-CDLBjvik.js";import a from"./ProductDetails-CXAsq6YQ.js";import"./main-C7PrwA1Q.js";import"./ProductList-BzdPahzd.js";o();const e=new t,c=r("product"),i=new a(c,e);i.init();
