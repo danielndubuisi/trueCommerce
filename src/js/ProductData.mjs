@@ -7,19 +7,20 @@ function convertToJson(res) {
 }
 
 // Base URL for server - can be changed in the .env file
-const baseURL = import.meta.env.VITE_SERVER_URL; //from .env file
+const baseURL = import.meta.env.VITE_FAKESTORE_API_URL; //from .env file
 
 // Class to handle fetching product data
 export default class ProductData {
   constructor(category) {
     this.category = category;
     // Always served from /json/... because it's inside public/
-    this.path = `/json/${this.category}.json`;
+    this.path = `${baseURL}products`;
   }
 
   async getData() {
     try {
-      const data = await fetch(this.path).then(convertToJson);
+      const response = await fetch(this.path);
+      const data = await convertToJson(response);
       return data;
     } catch (err) {
       console.error("Error loading data:", err);
@@ -29,6 +30,6 @@ export default class ProductData {
 
   async findProductById(id) {
     const products = await this.getData();
-    return products.find((item) => item.Id === id);
+    return products.find((item) => String(item.id) === String(id));
   }
 }

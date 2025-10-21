@@ -49,7 +49,7 @@ export default class ProductDetails {
 
 function productDetailsTemplate(product) {
   document.querySelector(".breadcrumb").innerHTML =
-    `<a href='/product_listing/index.html'>All Products</a> &gt; <span>${capitalizeFirstLetter(product?.category) || "Category"}</span>`;
+    `<a href='${import.meta.env.BASE_URL}product_listing/index.html'>All Products</a> &gt; <span>${capitalizeFirstLetter(product?.category) || "Category"}</span>`;
 
   // Product name and short description
   document.getElementById("productName").textContent = product?.title;
@@ -72,6 +72,11 @@ function productDetailsTemplate(product) {
   document.getElementById("productDiscount").textContent = discountPercent
     ? `-${discountPercent * 100}%`
     : "";
+
+  // features
+  document.querySelector(".product-features").innerHTML = `<li>Free returns for 30 days</li>
+        <li>Convenient payment methods</li>
+        <li>Deliver to home or pick-up point</li>`;
 
   // Rating
   document.querySelector(".stars").textContent = "★★★★★"; // Replace with dynamic rating if available

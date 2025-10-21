@@ -3,7 +3,6 @@ import {
   getLocalStorageItemIndex,
   setLocalStorage,
   removeLocalStorageKey,
-  getResponsiveImage,
 } from "./utils.mjs";
 
 export default class Cart {
@@ -20,24 +19,24 @@ export default class Cart {
   cartItemTemplate(item) {
     return `
       <li class="cart-card divider">
-        <a href="#" class="cart-card__image">
-          <img src="${getResponsiveImage(item)}" alt="${item.Name}" />
+        <a href="${import.meta.env.BASE_URL}product_pages/?product=${item.id}" class="cart-card__image">
+          <img src="${item.image}" alt="${item.title}" />
         </a>
-        <a href="#">
-          <h2 class="card__name">${item.Name}</h2>
-        </a>
-        <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-
+        <div class="cart-card__info">
+          <a href="${import.meta.env.BASE_URL}product_pages/?product=${item.id}">
+            <h2 class="card__name">${item.title}</h2>
+          </a>
+        </div>
         <div class="cart-actions">
           <div class="quantity-control">
-            <button class="qty-btn add" data-id="${item.Id}">+</button>
-            <span class="qty-text">${item.Quantity}</span>
-            <button class="qty-btn subtract" data-id="${item.Id}">-</button>
-            <button class="qty-btn remove" data-id="${item.Id}">X</button>
+            <button class="qty-btn add" data-id="${item.id}">+</button>
+            <span class="qty-text">${item.quantity}</span>
+            <button class="qty-btn subtract" data-id="${item.id}">-</button>
+            <button class="qty-btn remove" data-id="${item.id}">🗑</button>
           </div>
-          <p class="cart-card__price">$${(
-            item.FinalPrice * item.Quantity
-          ).toFixed(2)}</p>
+          <p class="cart-card__price">$${(item.price * item.quantity).toFixed(
+            2,
+          )}</p>
         </div>
       </li>
     `;
@@ -48,6 +47,7 @@ export default class Cart {
 
     const cartItems = getLocalStorage(this.key) || [];
     this.listElement.innerHTML = "";
+    document.querySelector(".summary-items").textContent = cartItems.length;
 
     if (cartItems.length > 0) {
       this.listElement.innerHTML = cartItems
@@ -71,33 +71,33 @@ export default class Cart {
 
     let total = 0;
     items.forEach((item) => {
-      const price = parseFloat(item.FinalPrice || item.price || 0);
-      const quantity = item.Quantity || 1;
+      const price = parseFloat(item.price || 0);
+      const quantity = item.quantity || 1;
       total += price * quantity;
     });
 
     const totalAmount = document.querySelector(".cart-total");
     if (totalAmount) {
-      totalAmount.textContent = `Total: $${total.toFixed(2)}`;
+      totalAmount.textContent = `$${total.toFixed(2)}`;
       cartFooter.classList.remove("hide");
-    }
+    };
   }
 
   changeQuantity(change, itemId) {
     let cartItems = getLocalStorage(this.key) || [];
-    let itemIndex = getLocalStorageItemIndex(cartItems, "Id", itemId);
+    let itemIndex = getLocalStorageItemIndex(cartItems, "id", itemId);
 
     if (itemIndex < 0) return;
 
     switch (change) {
       case "add":
-        cartItems[itemIndex].Quantity += 1;
+        cartItems[itemIndex].quantity += 1;
         break;
       case "subtract":
-        if (cartItems[itemIndex].Quantity === 1) {
+        if (cartItems[itemIndex].quantity === 1) {
           cartItems.splice(itemIndex, 1);
         } else {
-          cartItems[itemIndex].Quantity -= 1;
+          cartItems[itemIndex].quantity -= 1;
         }
         break;
     }
@@ -113,7 +113,7 @@ export default class Cart {
 
   removeItem(itemId) {
     let cartItems = getLocalStorage(this.key) || [];
-    let itemIndex = getLocalStorageItemIndex(cartItems, "Id", itemId);
+    let itemIndex = getLocalStorageItemIndex(cartItems, "id", itemId);
 
     if (itemIndex > -1) {
       cartItems.splice(itemIndex, 1);

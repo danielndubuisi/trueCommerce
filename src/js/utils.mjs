@@ -110,11 +110,11 @@ export function capitalizeFirstLetter(text) {
 }
 
 export function productIsInArray(productId, array) {
-  return array.some((item) => item.Id == productId);
+  return array.some((item) => item.id == productId);
 }
 
 export function findProductIndexInArrayById(productId, array) {
-  return array.findIndex((item) => item.Id == productId);
+  return array.findIndex((item) => item.id == productId);
 }
 
 export function removeLocalStorageKey(key) {
@@ -143,10 +143,10 @@ export function alertMessage(message, scroll = true) {
 
   setTimeout(() => {
     alert.remove();
-  }, 5000);
+  }, 3000);
 }
 
 export function showAddedToCartMessage(productName) {
-  alertMessage(`✅ ${productName} has been added to your cart!`);
+  alertMessage(`${productName} has been added to your cart!✅`);
 }
 // ✅ New function to show "added to cart" message
