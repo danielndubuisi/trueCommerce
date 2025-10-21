@@ -817,6 +817,13 @@ button:focus-visible {
   border: 1px solid #f0f0f0;
   box-shadow: 0 6px 18px rgba(30, 30, 30, 0.03);
   margin-bottom: 1rem;
+
+  &:hover {
+    transition: 0.3s ease-in-out;
+    background-color: rgba(30, 30, 30, 0.05);
+    scale: 1.02;
+    cursor: pointer;
+  }
 }
 .cart-media {
   height: 88px;
