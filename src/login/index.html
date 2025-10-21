@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="../css/login.css" />
   </head>
   <body>
-    <div class="container">
+    <main class="container">
       <div class="login-card">
         <h1>Sign In</h1>
-        <p>Hi there! Nice to see you again.</p>
+        <p>Welome back! Sign in for trending news.</p>
         <form id="login-form">
           <label for="email">Email</label>
           <input
@@ -30,18 +30,18 @@
             required
           />
 
-          <button type="submit" class="btn">Sign In</button>
+          <button type="submit" class="btn" id="auth-btn">Sign In</button>
 
           <div class="social-login">
             <button class="btn social-btn twitter">Twitter</button>
             <button class="btn social-btn facebook">Facebook</button>
           </div>
 
-          <a href="#" class="forgot-password">Forgot Password?</a>
+          <small class="forgot-password"> Don't have an account? </small>
           <a href="./signup.html" class="signup-link">Sign Up</a>
         </form>
         <a href="../index.html" class="home-link">←Home</a>
       </div>
-    </div>
-  </body>
+    </main>
+    <script type="module" src="../js/auth.mjs"></script>
 </html>

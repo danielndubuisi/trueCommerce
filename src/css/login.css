@@ -66,7 +66,7 @@ input:focus {
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  background-color: #4ecdc4;
 }
 
 .social-login {
@@ -96,15 +96,19 @@ input:focus {
 .signin-link {
   text-align: center;
   display: block;
-  margin-top: 10px;
   color: #007bff;
   text-decoration: none;
 }
 
-.forgot-password:hover,
 .signup-link:hover,
 .signin-link:hover {
+  color: #206818;
   text-decoration: underline;
+}
+
+.forgot-password {
+  margin: 10px 0 0 -10px;
+  color: #666;
 }
 
 .terms {
@@ -129,4 +133,13 @@ input:focus {
 
 .home-link:hover {
   text-decoration: underline;
+}
+
+.alert-box {
+  background: #f0ffef;
+  border: 1px solid #c6efde;
+  color: var(--highlight);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
 }

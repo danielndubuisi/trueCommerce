@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="../css/login.css" />
   </head>
   <body>
-    <div class="container">
+    <main class="container">
       <div class="signup-card">
         <h1>Sign Up</h1>
-        <p>Join us to get hot news</p>
+        <p>Join us to see hot news</p>
         <form id="signup-form">
           <label for="email">Email</label>
           <input
@@ -37,12 +37,13 @@
             >
           </div>
 
-          <button type="submit" class="btn">Continue</button>
+          <button class="btn">Continue</button>
 
-          <a href="./index.html" class="signin-link">Sign In</a>
+          <a href="./index.html" class="signin-link" id="auth-btn">Sign In</a>
         </form>
         <a href="../index.html" class="home-link">←Home</a>
       </div>
-    </div>
+    </main>
+    <script type="module" src="../js/auth.mjs"></script>
   </body>
 </html>

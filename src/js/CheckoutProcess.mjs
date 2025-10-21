@@ -6,10 +6,10 @@ const services = new ExternalServices();
 
 function packageItems(items) {
   const simplifiedItems = items.map((item) => ({
-    id: item.Id,
-    price: item.FinalPrice * item.Quantity,
-    name: item.Name,
-    quantity: item.Quantity,
+    id: item.id,
+    price: item.price * item.quantity,
+    name: item.title,
+    quantity: item.quantity,
   }));
   return simplifiedItems;
 }
@@ -43,11 +43,13 @@ export default class CheckoutProcess {
     let subtotal = 0;
     let itemCount = 0;
     this.list.forEach((item) => {
-      subtotal += item.FinalPrice * item.Quantity;
+      subtotal += item.price * item.quantity;
       itemCount++;
     });
     this.itemTotal = subtotal;
-    document.querySelector("#cartTotal").textContent = `$${subtotal.toFixed(2)}`;
+    this.calculateOrderTotal();
+    document.querySelector("#cartTotal").textContent =
+      `$${subtotal.toFixed(2)}`;
     document.querySelector("#num-items").textContent = `${itemCount}`;
   }
 
@@ -66,11 +68,13 @@ export default class CheckoutProcess {
     const tax = document.querySelector(`${this.outputSelector} #tax`);
     const shipping = document.querySelector(`${this.outputSelector} #shipping`);
     const orderTotal = document.querySelector(
-      `${this.outputSelector} #orderTotal`
+      `${this.outputSelector} #orderTotal`,
     );
 
     tax.innerText = `$${this.tax.toFixed(2)}`;
-    shipping.innerText = `$${this.shipping.toFixed(2)}`;
+    shipping.innerText = `$${
+      this.orderTotal < 700 ? this.shipping.toFixed(2) : 0.0
+    }`;
     orderTotal.innerText = `$${this.orderTotal.toFixed(2)}`;
   }
 
@@ -90,13 +94,13 @@ export default class CheckoutProcess {
 
       // clear cart and redirect to success page
       localStorage.removeItem("so-cart");
-      window.location.href = "/src/checkout/success.html";
+      window.location.href = "../checkout/success.html";
     } catch (err) {
-      console.error("Checkout failed:", err);
       alertMessage(
         `Checkout failed: ${
           err.message?.message || JSON.stringify(err.message)
-        }`
+        }`,
+        false,
       );
     }
   }

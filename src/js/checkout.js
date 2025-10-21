@@ -7,7 +7,7 @@ function displayError(message) {
   const container = document.querySelector(".checkout-form");
   if (!container) return;
 
-  const errorBox = document.createElement("div");
+  const errorBox = document.querySelector(".error-box");
   errorBox.classList.add("error-message");
   errorBox.innerHTML = `
     ${message}

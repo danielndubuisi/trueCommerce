@@ -124,10 +124,13 @@ export function getResponsiveImage(product) {
   return images?.PrimaryExtraLarge || product.PrimaryExtraLarge;
 }
 
-export function alertMessage(message, scroll = true) {
+export function alertMessage(message, success = true, scroll = true) {
   const main = document.querySelector("main");
   const alert = document.createElement("div");
   alert.classList.add("alert-box");
+  if (!success) {
+    alert.classList.add("alert-fail");
+  }
   alert.innerHTML = `<p>${message}</p>`;
   main.prepend(alert);
 
