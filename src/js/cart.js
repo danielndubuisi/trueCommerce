@@ -80,7 +80,7 @@ export default class Cart {
     if (totalAmount) {
       totalAmount.textContent = `$${total.toFixed(2)}`;
       cartFooter.classList.remove("hide");
-    };
+    }
   }
 
   changeQuantity(change, itemId) {
@@ -130,16 +130,19 @@ export default class Cart {
   addEventListeners() {
     if (!this.listElement) return;
 
-    // if duplicate item clicked, only increment quantity
     this.listElement.addEventListener("click", (e) => {
-      if (e.target.classList.contains("add")) {
-        this.changeQuantity("add", e.target.dataset.id);
-      }
-      if (e.target.classList.contains("subtract")) {
-        this.changeQuantity("subtract", e.target.dataset.id);
-      }
-      if (e.target.classList.contains("remove")) {
-        this.removeItem(e.target.dataset.id);
+      if (e.target.classList.contains("qty-btn")) {
+        e.preventDefault(); // Prevent navigation or bubbling from <a>
+        const itemId = e.target.dataset.id;
+        if (e.target.classList.contains("add")) {
+          this.changeQuantity("add", itemId);
+        }
+        if (e.target.classList.contains("subtract")) {
+          this.changeQuantity("subtract", itemId);
+        }
+        if (e.target.classList.contains("remove")) {
+          this.removeItem(itemId);
+        }
       }
     });
   }

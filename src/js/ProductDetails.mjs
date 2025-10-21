@@ -19,9 +19,11 @@ export default class ProductDetails {
 
     this.renderProductDetails();
 
-    document
-      .getElementById("addToCart")
-      .addEventListener("click", this.addProductToCart.bind(this));
+    // Ensure only one event listener is attached
+    const addToCartBtn = document.getElementById("addToCart");
+    const newBtn = addToCartBtn.cloneNode(true);
+    addToCartBtn.parentNode.replaceChild(newBtn, addToCartBtn);
+    newBtn.addEventListener("click", this.addProductToCart.bind(this));
   }
 
   addProductToCart() {
@@ -74,7 +76,8 @@ function productDetailsTemplate(product) {
     : "";
 
   // features
-  document.querySelector(".product-features").innerHTML = `<li>Free returns for 30 days</li>
+  document.querySelector(".product-features").innerHTML =
+    `<li>Free returns for 30 days</li>
         <li>Convenient payment methods</li>
         <li>Deliver to home or pick-up point</li>`;
 

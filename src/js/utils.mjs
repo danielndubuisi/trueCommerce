@@ -89,20 +89,14 @@ function updateCartCount() {
   }
 }
 
+// utils.mjs
 export function getLocalStorageItemIndex(array, attr, value) {
-  let i = array.length;
-  let indexNumber = 0;
-  while (i--) {
-    if (
-      array[i] &&
-      array[i].hasOwnProperty(attr) &&
-      arguments.length > 2 &&
-      array[i][attr] === value
-    ) {
-      indexNumber = i;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] && String(array[i][attr]) === String(value)) {
+      return i;
     }
   }
-  return indexNumber;
+  return -1;
 }
 
 export function capitalizeFirstLetter(text) {
