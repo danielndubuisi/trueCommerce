@@ -2,28 +2,64 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Cart</title>
-    <script type="module" crossorigin src="/trueCommerce/assets/utils-DZkesnri.js"></script>
-    <script type="module" crossorigin src="/trueCommerce/assets/ProductList-BdcFtKdK.js"></script>
-    <script type="module" crossorigin src="/trueCommerce/assets/main-WuRN3ZVI.js"></script>
-    <link rel="stylesheet" crossorigin href="/trueCommerce/assets/utils-BfsFj6PV.css">
+    <title>TrueCommerce Cart</title>
+    <script type="module" crossorigin src="/trueCommerce/assets/utils-DHPMa1J3.js"></script>
+    <script type="module" crossorigin src="/trueCommerce/assets/ProductList-VPTHBbxC.js"></script>
+    <script type="module" crossorigin src="/trueCommerce/assets/main-DpqfPhMK.js"></script>
+    <link rel="stylesheet" crossorigin href="/trueCommerce/assets/utils-tg5Vg9HO.css">
   </head>
   <body class="cart-page">
     <!-- Header injected via JS -->
     <header class="divider" id="main-header"></header>
-    <main class="divider">
-      <section class="products">
-        <h2>My Cart</h2>
-        <ul class="product-list"></ul>
-        <!-- cart total -->
+    <main class="cart-main">
+      <div class="cart-header">
+        <a href="/index.html" class="back-link">&larr; Back to Shop</a>
+        <span class="cart-support">Customer Support</span>
+      </div>
+      <h2 class="cart-title">Shopping Cart</h2>
+      <p class="cart-subtitle">
+        Shipping charges and discount codes are confirmed at checkout.
+      </p>
+      <div class="cart-content-grid">
+        <section class="cart-order">
+          <h3>Your order</h3>
+          <ul class="cart-list"></ul>
+        </section>
         <div class="cart-footer">
-          <p class="cart-total"></p>
+          <aside class="cart-summary">
+            <h3>Summary</h3>
+            <div class="summary-details">
+              <div class="summary-row">
+                <span>Items in the Cart</span>
+                <span class="summary-items"></span>
+              </div>
+              <div class="summary-row">
+                <span>Discount applied</span>
+                <span class="summary-savings">25%</span>
+              </div>
+              <div class="summary-row summary-total">
+                <span>Total</span>
+                <span class="summary-total-amount cart-total"></span>
+              </div>
+            </div>
+            <a href="../checkout/index.html" class="checkout-btn"
+              >Go to Checkout</a
+            >
+            <input
+              type="text"
+              class="discount-input"
+              placeholder="Discount code / Gift card"
+            />
+          </aside>
         </div>
-      </section>
-      <section class="cart-footer">
-        <a href="../checkout/index.html" class="checkout-btn"
-          >Proceed to Checkout</a
-        >
+      </div>
+      <section class="cart-safe">
+        <h4>Safe & easy shopping</h4>
+        <ul class="safe-list">
+          <li>☑ Free returns for 30 days</li>
+          <li>☑ Convenient payment methods</li>
+          <li>☑ Deliver to home or pick-up point</li>
+        </ul>
       </section>
     </main>
     <!-- Footer injected via JS -->
