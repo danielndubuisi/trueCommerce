@@ -1,0 +1,1 @@
+import{l as o,b as r}from"./utils-as6mqNxt.js";/* empty css              */import{E as t}from"./ExternalServices-E0A9va82.js";import a from"./ProductDetails-D1tDIxDW.js";import"./main-CLce2CM2.js";import"./ProductList-DpdOpC2D.js";o();const e=new t,i=r("product"),m=new a(i,e);m.init();
