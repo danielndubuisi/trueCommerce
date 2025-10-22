@@ -14,6 +14,10 @@ export default class ExternalServices {
     const response = await fetch(`${baseURL}products/`);
     const data = await convertToJson(response);
     if (category) {
+      document.getElementById("product-cat").textContent = category
+        ? `in ${category}`
+        : "";
+
       return data.filter(
         (item) => item.category.toLowerCase() === category.toLowerCase(),
       );

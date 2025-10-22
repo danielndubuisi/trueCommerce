@@ -208,9 +208,19 @@ a {
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  color: var(--color-secondary);
   font-weight: 600;
   box-shadow: 0 6px 18px rgba(30, 30, 30, 0.03);
+
+  a {
+    color: var(--color-secondary);
+  }
+
+  &:hover, a:hover {
+    background: var(--bg);
+    color: var(--color-primary);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
 }
 
 .promo-box {
@@ -272,14 +282,6 @@ a {
   height: 100%;
 }
 
-.card-media {
-  background: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
 .product-card img {
   width: auto;
   height: 200px; /* Adjusted height for smaller images */
@@ -321,7 +323,7 @@ a {
 .product-card .media {
   /* height: 140px; */
   background: linear-gradient(180deg, #fff 0%, var(--accent) 100%);
-  border-radius: 10px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -332,10 +334,12 @@ a {
   font-size: 1rem;
   color: var(--color-secondary);
   font-weight: 600;
+  padding-left: 1rem;
 }
 .price {
-  color: var(--color-primary);
+  color: var(--highlight);
   font-weight: 700;
+  padding-left: 1rem;
 }
 
 .discount-grid {
