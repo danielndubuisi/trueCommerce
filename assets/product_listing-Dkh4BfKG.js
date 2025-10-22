@@ -1,0 +1,1 @@
+import{l as t,b as o}from"./utils-as6mqNxt.js";/* empty css              */import{E as r}from"./ExternalServices-6PA6TiOQ.js";import{P as e}from"./ProductList-DpdOpC2D.js";t();const a=o("category"),c=new r,s=document.querySelector(".product-list"),i=new e(a,c,s);i.init();
