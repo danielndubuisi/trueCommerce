@@ -2,6 +2,7 @@ import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 import Cart from "./cart.js";
+import News from "./news.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadHeaderFooter();
@@ -45,6 +46,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       const dataSource = new ProductDataModule(category);
       const productDetails = new ProductDetails(productId, dataSource);
       productDetails.init();
+    }
+  }
+
+  // news page
+  if (pathname.includes("news")) {
+    const newsListElement = document.querySelector(".news-list");
+
+    if (newsListElement) {
+      const news = new News(newsListElement);
+      news.init();
     }
   }
 });

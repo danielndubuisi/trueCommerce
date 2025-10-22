@@ -1071,6 +1071,71 @@ input:focus {
   color: var(--highlight);
 }
 
+/* NEWS PAGE STYLES */
+.news-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  list-style: none;
+}
+.news-item {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+.news-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.news-article {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+  color: var(--color-secondary);
+
+  span {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+}
+.news-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.news-summary {
+  font-size: 1rem;
+  color: #333;
+  flex-grow: 1;
+}
+.news-date {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.read-more {
+  margin-top: auto; /* Ensures the button stays at the bottom */
+  padding: 0.5rem;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    background: var(--highlight);
+  }
+}
+
 /* Responsive designs */
 @media ((max-width: 724px) and (min-width: 201px)) {
   .container {
